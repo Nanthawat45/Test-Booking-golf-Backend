@@ -5,7 +5,7 @@ import User from "../models/User.js";
 // Middleware สำหรับตรวจสอบการยืนยันตัวตนของผู้ใช้
 export const protect = async (req, res, next) => { //next คือฟังก์ชันที่เรียกใช้ต่อไป
 
-  console.log("------------------------------------");
+console.log("------------------------------------");
     console.log("Protect Middleware Fired!");
     console.log("Request Method:", req.method);
     console.log("Request URL:", req.originalUrl);
@@ -13,7 +13,7 @@ export const protect = async (req, res, next) => { //next คือฟังก�
     console.log("Request Headers (Origin):", req.headers.origin);
     console.log("All Cookies from req.cookies:", req.cookies); // มี jwt ไหม
     console.log("Attempting to get jwt from req.cookies.jwt:", req.cookies.jwt); //และค่าของมัน
-    
+
   const token = req.cookies.jwt; // ดึง token จาก cookies ที่ส่งมาจาก client
 
   if (!token) {
