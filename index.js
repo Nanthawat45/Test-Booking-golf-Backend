@@ -19,12 +19,18 @@ try {
     mongoose.connect(DB_URL);
     console.log("Connect to Mongo DB Successfully");
   } catch (error) {
-    console.log("DB Connection Failed");
+    console.log("DB Connection Failed", error);
   }
-  
+
+app.use(cors({
+    origin: process.env.FRONTEND_URL, // http://localhost:5173
+    credentials: true, 
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+    allowedHeaders: ['Content-Type', 'Authorization'], 
+}));
+
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({origin: process.env.FRONTEND_URL, credentials: true}));
 
 app.use("/api/user", userRoutes);
 app.use("/api/bookings", bookingRoutes);
