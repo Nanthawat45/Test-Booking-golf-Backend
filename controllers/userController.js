@@ -13,7 +13,7 @@ export const generateToken = (userId, res) => {
 
     res.cookie("jwt", token, { // 🔹 ตั้งค่า cookie สำหรับ JWT
         httpOnly: true, // ห้าม JavaScript ฝั่ง frontend อ่าน cookie
-        secure: process.env.NODE_ENV === "production", // ใช้ https ใน production
+        secure: process.env.NODE_ENV, // ใช้ https ใน production
         sameSite: "Lax", // ป้องกัน CSRF (ใช้ "None" ถ้าจะส่งจาก frontend ต่าง origin)
         maxAge: 24 * 60 * 60 * 1000, // 1 วัน
     });
